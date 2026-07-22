@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*lty1biy1qspez&nxj6m_db%rk=!g3iyy^0fe%v2llq!3$&9g_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*',"https://boxed-mens-heel-colours.trycloudflare.com"]
+ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS=['https://boxed-mens-heel-colours.trycloudflare.com']
 
 # Application definition
@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware"
+    
 ]
 MIDDLEWARE.insert(0,"corsheaders.middleware.CorsMiddleware")
 
@@ -79,14 +81,7 @@ WSGI_APPLICATION = 'django_syte.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'parser',
-        'USER':'postgres',
-        'PASSWORD':'456123',
-        'HOST':'localhost',
-        'PORT':'5432',
-    }
+    'default':dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 
 
@@ -125,3 +120,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
