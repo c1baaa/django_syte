@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*lty1biy1qspez&nxj6m_db%rk=!g3iyy^0fe%v2llq!3$&9g_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["dengipodzalog.uz","www.dengipodzalog.uz"]
 CSRF_TRUSTED_ORIGINS=['https://boxed-mens-heel-colours.trycloudflare.com']
 
 # Application definition
