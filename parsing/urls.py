@@ -1,11 +1,11 @@
 from django.urls import path,include
 from . import views
 from rest_framework.routers import DefaultRouter
-from parsing.views import CurrencyViewSet
+
 
 
 router = DefaultRouter()
-router.register(r'currency', CurrencyViewSet)
+
 
 urlpatterns = [
     path('', include(router.urls)),

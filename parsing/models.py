@@ -1,21 +1,6 @@
 # models.py
 from django.db import models
 
-class Currency(models.Model):
-    id = models.IntegerField(primary_key=True)
-    usd = models.CharField(max_length=100)
-    eur = models.CharField(max_length=100)
-    rub = models.CharField(max_length=100)
-    gbp = models.CharField(max_length=100)
-    jpy = models.CharField(max_length=100)
-    chf = models.CharField(max_length=100)
-    cny = models.CharField(max_length=100)
-    date_added=models.DateTimeField()
-
-    class Meta:
-        managed=False
-        db_table='currency'
-
 class User(models.Model):
     username = models.CharField(max_length=100, unique=True)
     passport_number = models.CharField(max_length=20, unique=True)

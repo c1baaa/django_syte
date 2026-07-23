@@ -1,6 +1,6 @@
 # serializers.py
 from rest_framework import serializers
-from .models import Currency,User,Transfer,Payment
+from .models import User,Transfer,Payment
 from .models import Card
 
 class CardSerializer(serializers.ModelSerializer):
@@ -17,10 +17,7 @@ class CardSerializer(serializers.ModelSerializer):
 
 
 
-class CurrencySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Currency
-        fields = '__all__'
+
 
 
 class UserSerializer(serializers.ModelSerializer):

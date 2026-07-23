@@ -1,7 +1,7 @@
 # views.py
 from rest_framework import viewsets
-from .models import Currency
-from .serializers import CurrencySerializer
+
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -11,12 +11,7 @@ import hashlib
 from decimal import Decimal
 import datetime
 
-class CurrencyViewSet(viewsets.ModelViewSet):
-    queryset = Currency.objects.all()
-    serializer_class = CurrencySerializer
-    rows = Currency.objects.values()
-    for row in rows:
-        print(row)   # {'id': 1, 'usd': '10000', 'eur': '9500', ...}
+
 
 
 
