@@ -51,7 +51,7 @@ def login(request):
             return Response({
                 "id": user.id,
                 "username": user.username,
-                "total_balance": sum(card.balance for card in user.cards.all())
+                "total_balance": user.total_balance
             })
         else:
             return Response({"error": "Неверный пароль"}, status=status.HTTP_400_BAD_REQUEST)
