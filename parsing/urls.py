@@ -20,5 +20,8 @@ urlpatterns = [
     path("pay/", views.make_payment),
     path("payments/<int:user_id>/", views.payment_list),
     path("profile/<int:user_id>/", views.profile),
+    path(
+        'cards/user/<int:user_id>/',
+        views.user_cards, name='user_cards'),
 
     ]
