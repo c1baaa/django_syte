@@ -194,7 +194,9 @@ def add_card(request):
 @api_view(['GET'])
 def user_cards(request, user_id):
     cards = Card.objects.filter(user_id=user_id)
+
     serializer = CardSerializer(cards, many=True)
+
     return Response(serializer.data)
 @api_view(['POST'])
 def card_transfer(request):
