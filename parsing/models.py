@@ -5,7 +5,7 @@ class User(models.Model):
     username = models.CharField(max_length=100, unique=True)
     passport_number = models.CharField(max_length=20, unique=True)
     password_hash = models.CharField(max_length=256, default="")
-
+    
     @property
     def total_balance(self):
         return sum(card.balance for card in self.cards.all())
