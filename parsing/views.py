@@ -109,9 +109,22 @@ def transfer_list(request):
 def user_balance(request, user_id):
     try:
         user = User.objects.get(id=user_id)
-        return Response({"id": user.id, "username": user.username, "balance": user.balance})
+
+        total_balance = sum(
+            card.balance for card in user.cards.all()
+        )
+
+        return Response({
+            "id": user.id,
+            "username": user.username,
+            "balance": total_balance
+        })
+
     except User.DoesNotExist:
-        return Response({"error": "Пользователь не найден"}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            {"error": "Пользователь не найден"},
+            status=status.HTTP_404_NOT_FOUND
+        )
 
 # cardtransfer 
 
